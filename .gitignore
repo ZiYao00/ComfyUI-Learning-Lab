@@ -1,0 +1,18 @@
+# Local / external backup content
+vault/知识星球.backup/
+
+# Obsidian machine-local state
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+vault/.obsidian/cache/
+vault/.trash/
+
+# Legacy editor-local state
+vault/_legacy/**/.space/
+
+# Cloud-upload temporary metadata
+*.baiduyun.uploading.cfg
+
+# OS files
+.DS_Store
+Thumbs.db

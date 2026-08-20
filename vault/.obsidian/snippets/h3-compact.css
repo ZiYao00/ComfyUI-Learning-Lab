@@ -1,0 +1,41 @@
+/* MiniMax H3 compact manual style.
+   Enable in Obsidian: Settings -> Appearance -> CSS snippets -> h3-compact */
+
+.h3-compact {
+  --font-text-size: 14px;
+  --h1-size: 1.55em;
+  --h2-size: 1.28em;
+  --h3-size: 1.10em;
+  --line-height-normal: 1.45;
+}
+
+.h3-compact table {
+  width: 100%;
+  font-size: 0.90em;
+}
+
+.h3-compact table th,
+.h3-compact table td,
+.h3-compact table a {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.h3-compact pre,
+.h3-compact code {
+  font-size: 0.92em;
+}
+
+.h3-compact h1,
+.h3-compact h2,
+.h3-compact h3 {
+  margin-top: 1.15em;
+  margin-bottom: 0.55em;
+}
+
+.h3-compact p,
+.h3-compact ul,
+.h3-compact ol {
+  margin-block: 0.5em;
+}
