@@ -3,14 +3,23 @@ title: MiniMax H3
 topic: minimax-h3
 type: model-review
 status: verified
-last_verified: 2026-08-20
+last_verified: 2026-08-21
 cssclasses:
-  - h3-compact
+  - learning-page
+  - model-guide
 ---
 
 # MiniMax H3
 
-## 1. 模型下载
+> [!lead]
+> H3 主说明书负责回答：**下载什么、文件放哪里、FL2VA / Ref2VA 怎么选、LoRA 怎么配、运行边界和分辨率怎么设。** 提示词、性能优化和真实测试分别维护在独立附页。
+
+> [!summary] 先记住这两个选择
+> **FL2VA**：输入图片本身就是目标视频的关键帧，用于 T2V / I2V / 尾帧 / 首尾帧。
+>
+> **Ref2VA**：素材用于“参考人物、服装、场景、动作、运镜或声音”，不要求参考图成为目标视频第一帧。
+
+## 01 · 模型下载
 
 **ComfyUI 官方适配仓库：** [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3)
 
@@ -41,7 +50,7 @@ cssclasses:
 
 ---
 
-## 2. 文件放置位置
+## 02 · 文件放置位置
 
 ```text
 ComfyUI/
@@ -64,7 +73,7 @@ ComfyUI/
 
 ---
 
-## 3. 这 5 个核心文件分别干什么
+## 03 · 这 5 个核心文件分别干什么
 
 ```text
 Prompt / 图片 / 视频 / 音频
@@ -118,7 +127,7 @@ H3 的视频和音频是联合生成的，不是视频生成完以后再单独�
 
 ---
 
-## 4. FL2VA / Ref2VA 怎么选
+## 04 · FL2VA / Ref2VA 怎么选
 
 | 需求 | 使用 |
 | --- | --- |
@@ -147,7 +156,7 @@ H3 的视频和音频是联合生成的，不是视频生成完以后再单独�
 
 ---
 
-## 5. LoRA 怎么选
+## 05 · LoRA 怎么选
 
 **LoRA 跟主模型走。**
 
@@ -164,7 +173,38 @@ Civitai 同一个 LoRA 如果同时提供 FL2VA 与 Ref2VA 两版：
 
 ---
 
-## 6. 分辨率
+## 06 · 运行边界
+
+### 帧数
+
+- H3 帧数规则：`17n + 5`。
+- 与 Wan 常见的 `8n + 1` 不同，不要混用。
+
+### 时长
+
+- 当前教程建议生成时长：**4 ~ 15 秒**。
+- 若从秒数换算帧数，可使用：
+
+```text
+max(5, round(a * 24)) + (5 - (max(5, round(a * 24)) % 17)) % 17
+```
+
+其中 `a` 为目标秒数。
+
+### 四类输入
+
+| 输入 | FL2VA | Ref2VA | 备注 |
+| --- | --- | --- | --- |
+| 文本 | 支持 | 支持 | 支持多语言；教程记录英文稳定性略好；Prompt 最长约 7000 字符 |
+| 图片 | 1 张作首帧或尾帧；2 张作首尾帧 | 最多 9 张参考图 | FL2VA 把图片当关键帧；Ref2VA 主要参考人物、风格、构图等内容 |
+| 视频 | 不支持 | 最多 3 段 | 单段 2 ~ 15 秒，总时长不超过 15 秒；用于动作、运镜、音色等参考 |
+| 音频 | 不支持 | 最多 3 段 | 单段 2 ~ 15 秒，总时长不超过 15 秒；不能只给纯音频，需搭配图片或视频 |
+
+> 以上输入上限与时长规则来自 2026-08-21 教程笔记，后续以实际工作流和官方更新继续复核。
+
+---
+
+## 07 · 分辨率
 
 ### 基本规则
 
@@ -218,7 +258,7 @@ Civitai 同一个 LoRA 如果同时提供 FL2VA 与 Ref2VA 两版：
 
 ---
 
-## 7. 官方工作流
+## 08 · 官方工作流
 
 - [T2V 工作流](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_minimax_h3_t2v.json)
 - [I2V 工作流](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_minimax_h3_i2v.json)
@@ -228,7 +268,16 @@ Civitai 同一个 LoRA 如果同时提供 FL2VA 与 Ref2VA 两版：
 
 ---
 
-## 8. 30 秒复习
+## 09 · 深入学习
+
+- [[MiniMax-H3-提示词|提示词]] — Base / Ref2VA 的提示词结构、镜头、声音、参考素材写法。
+- [[MiniMax-H3-加速与优化|加速与优化]] — Attention、Turbo LoRA、Cache、混合模型等方案。
+- [[MiniMax-H3-实测记录|实测记录]] — RH / RTX 4090 的参数、显存、生成时间、失败案例。
+- [[resources/H3-Agent-System-Prompt|H3 Agent System Prompt]] — 教程提供的完整 Agent 执行指令，作为原始资源保存。
+
+---
+
+## 10 · 30 秒复习
 
 ```text
 核心 5 文件：

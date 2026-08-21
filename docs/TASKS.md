@@ -7,26 +7,37 @@
 - [x] 确定项目名 `ComfyUI-Learning-Lab`。
 - [x] 建立 `README.md`、`docs/`、`vault/`。
 - [x] 建立 Obsidian 导航页 `vault/00-导航.md`。
-- [x] 将 MiniMax H3 收口为单文件主说明书。
-- [x] 初始化独立 Git 仓库，默认分支 `main`。
+- [x] 完成 H3 单文件主说明书的第一阶段样板（后续已升级为主说明书 + 按需附页）。
+- [x] 初始化独立 Git 仓库，默认分支 `main`，并建立远端跟踪。
 - [x] 建立 `.gitignore`。
 - [x] 忽略 `vault/知识星球.backup/`。
 - [x] 将旧 `comfyui.backup` 初步整理到 `vault/_legacy/`。
 - [x] 建立旧资料迁移规则。
-- [ ] 设计并确认 `.obsidian` 哪些设置进入 Git、哪些保持本地。
-- [ ] 完成首次人工确认后的 Git commit。
+- [x] 明确 `.obsidian` 当前版本控制边界：项目级 CSS Snippet 跟随仓库；workspace / cache 等机器状态保持本地。
 
 ## Phase 1 - MiniMax H3 实际验证
 
 - [x] 完成 `Models/MiniMax-H3/MiniMax-H3.md` 基础说明书。
+- [x] 将 H3 从单文件样板升级为“主说明书 + 按需附页”结构。
+- [x] 建立 H3 提示词附页。
+- [x] 建立 H3 加速与优化附页。
+- [x] 建立 H3 实测记录附页。
+- [x] 保存 H3 Agent 系统指令到 `resources/`，与学习正文分离。
+- [x] 建立 `docs/DESIGN-SYSTEM.md` 与项目级 Obsidian CSS Snippet。
+- [x] 将 `MiniMax-H3-加速与优化.md` 重做为第一张视觉样板页。
+- [x] 修正 `grid-3` 的 2+1 换行问题：正常宽度固定三列，极窄正文区直接退回单列。
+- [x] 将 Design System 应用到 H3 主说明书 / 提示词 / 实测记录。
+- [x] 在 README / Design System 中补充 `h3-compact.css`、`learning-lab.css` 的复制与启用教程。
+- [x] 当前 H3 正式学习页版式已通过人工阅读验收，作为 Design System v0.2 基线。
+- [ ] 后续在浅色 / 深色、不同主题和极窄分栏下继续做回归观察；发现问题再修，不阻塞当前提交。
 - [ ] 在 RH / RTX 4090 跑一次 FL2VA I2V。
 - [ ] 记录 FL2VA 的模型、steps、分辨率、时长、显存、生成时间。
 - [ ] 在 RH / RTX 4090 跑一次 Ref2VA 多参考。
 - [ ] 记录 Ref2VA 的参考数量、`ref_image_size`、steps、分辨率、时长、显存、生成时间。
 - [ ] 对比 Turbo / 非 Turbo 的速度与质量。
 - [ ] 收集至少 3 个真实失败案例与修复方式。
-- [ ] 根据实测结果修订 H3 说明书。
-- [ ] 判断 H3 是否需要独立的“实战 / 故障排查”附页。
+- [ ] 根据实测结果修订 H3 说明书及对应附页。
+- [ ] 根据失败案例数量判断是否再拆独立“故障排查”页。
 
 ## Phase 2 - 旧资料逐步迁移
 
@@ -82,7 +93,10 @@
 ## Phase 6 - 网站原型
 
 - [ ] 至少有 3 个稳定学习模块后再启动。
-- [ ] 评估 Quartz / 其它 Markdown 静态发布方案。
+- [x] 暂定网站技术候选：Quartz + Starlight。
+- [ ] 使用同一批 `vault/` Markdown 制作 Quartz 小规模原型。
+- [ ] 使用同一批 `vault/` Markdown 制作 Starlight 小规模原型。
+- [ ] 对比 Obsidian Wikilink / 双链、导航、搜索、移动端阅读和界面定制成本。
+- [ ] 决定最终单用 Quartz、单用 Starlight，还是保留两种构建路线。
 - [ ] 保证网站继续以 `vault/` Markdown 为唯一内容源。
-- [ ] 验证导航、搜索、移动端阅读。
 - [ ] 决定公开内容与个人私有笔记的边界。
